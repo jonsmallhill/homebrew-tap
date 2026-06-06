@@ -1,30 +1,31 @@
 # Homebrew-Formula (CLI) für PoisonZero. `brew install jonsmallhill/tap/poisonzero`.
-# version + sha256 werden pro Release aktualisiert.
+# NICHT von Hand pflegen: wird vom Release-Workflow regeneriert
+# (scripts/update-homebrew-formula.js im Haupt-Repo).
 class Poisonzero < Formula
   desc "Protects AI agent memory files from poisoning (fail-closed, AI-scored)"
   homepage "https://poisonzero.com"
-  version "0.1.0"
+  version "0.4.0"
   license :cannot_represent
 
   on_macos do
     on_arm do
-      url "https://github.com/jonsmallhill/poisonzero/releases/download/v#{version}/poisonzero-darwin-arm64"
-      sha256 "9264df1a1c2fbce7dcd5cd2f90f75f086093fd1b3bae954625206d374dcb3638"
+      url "https://poisonzero.com/dl/v#{version}/poisonzero-darwin-arm64"
+      sha256 "5bd7b4a9b98025b36249f8c48b993c7dfaeecbf701bd6893b9fc8aa75f80059f"
     end
     on_intel do
-      url "https://github.com/jonsmallhill/poisonzero/releases/download/v#{version}/poisonzero-darwin-amd64"
-      sha256 "076707fc51353e524ba1cc1f520bd681aa102fe4afaef3dcece0dd866d0c4dce"
+      url "https://poisonzero.com/dl/v#{version}/poisonzero-darwin-amd64"
+      sha256 "b05272b982ac0988579ec0f636b6f2fa6fdbfd19df28e49f4778d25162435b68"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/jonsmallhill/poisonzero/releases/download/v#{version}/poisonzero-linux-arm64"
-      sha256 "9ccab8573030ed2db97b93b7b15bbb7cb9d126e7fbf24bd299cdcfa5aa7d6dd2"
+      url "https://poisonzero.com/dl/v#{version}/poisonzero-linux-arm64"
+      sha256 "a1548d7c16275631dead18e7dfbd7b26a852e69e3ad6fd4bceee260819a373fc"
     end
     on_intel do
-      url "https://github.com/jonsmallhill/poisonzero/releases/download/v#{version}/poisonzero-linux-amd64"
-      sha256 "37912fafbaca60d369e0482d4a339b195863bc3eac5f7289d48f93464f5ad90b"
+      url "https://poisonzero.com/dl/v#{version}/poisonzero-linux-amd64"
+      sha256 "ccbc5ad49b0be188530aa79ac64ed7fc4b85c0a99d6c0f7f4c28d7d505eb946f"
     end
   end
 
@@ -34,8 +35,8 @@ class Poisonzero < Formula
 
   def caveats
     <<~EOS
-      Daemon-Setup (root) separat — im Panel (app.poisonzero.com) eine App anlegen, dann:
-        sudo poisonzero enroll --app <appId> --code <code>
+      Daemon-Setup (root) separat — im Panel (console.poisonzero.com) eine App anlegen, dann:
+        sudo poisonzero enroll  (nach Anlegen der enroll-Datei, siehe docs/INSTALL.md)
     EOS
   end
 
