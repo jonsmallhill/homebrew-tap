@@ -4,33 +4,45 @@
 class Poisonzero < Formula
   desc "Protects AI agent memory files from poisoning (fail-closed, AI-scored)"
   homepage "https://poisonzero.com"
-  version "1.3.0"
+  version "1.4.0"
   license :cannot_represent
 
   on_macos do
     on_arm do
       url "https://poisonzero.com/dl/v#{version}/poisonzero-darwin-arm64"
-      sha256 "17a4685966a09520205af130b332c170998de4da95e363a8dc6eb88af21aa75e"
+      sha256 "630703e121e7e6eaaa8eccf5a689d4fb871f4056237d1f9c02a03d9f2f43c698"
     end
     on_intel do
       url "https://poisonzero.com/dl/v#{version}/poisonzero-darwin-amd64"
-      sha256 "1471dde2949d23c40562df49c4223d4a3e72160a42b085b675b753a6672270a2"
+      sha256 "dc1f9f0d7f40ccb1e4c2987875be23202e8af35b0671b8059ff830133f3ed228"
     end
   end
 
   on_linux do
     on_arm do
       url "https://poisonzero.com/dl/v#{version}/poisonzero-linux-arm64"
-      sha256 "3f84020092b6439ca793e30b6b79e90d59b4eae564ac8b1b40030935c21de75b"
+      sha256 "5a82a4d8ce8ca470de0023fe23fb3c7e93ad56b98ab6c1c718e64208c2949a0d"
     end
     on_intel do
       url "https://poisonzero.com/dl/v#{version}/poisonzero-linux-amd64"
-      sha256 "a1c08c863c0bec50fd6dc3e7fa7335de46f7b1dbbe4304f567968a0c67761821"
+      sha256 "a3622bc3daec74cf92ba79b2e97d2a20e68a084513fb13e257b13d1614c2c333"
     end
+  end
+
+  # Drittanbieter-Lizenz-Attribution (Spec §12: llama.cpp-MIT + Qwen3-Apache-2.0)
+  # als eigene Resource — brew lädt + verifiziert sie (SHA-256) und install legt
+  # sie unter share/doc ab, damit die Attribution auch über den brew-Weg beim
+  # Nutzer landet (nicht nur in .deb/.rpm).
+  resource "third-party-licenses" do
+    url "https://poisonzero.com/dl/v#{version}/THIRD_PARTY_LICENSES"
+    sha256 "dd93bed05e8433c8207ac52b271d8625085aa74273347fa2af3f0c0832e7bc50"
   end
 
   def install
     bin.install Dir["poisonzero-*"].first => "poisonzero"
+    resource("third-party-licenses").stage do
+      doc.install "THIRD_PARTY_LICENSES"
+    end
   end
 
   def caveats
