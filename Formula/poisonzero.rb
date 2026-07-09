@@ -4,28 +4,28 @@
 class Poisonzero < Formula
   desc "Protects AI agent memory files from poisoning (fail-closed, AI-scored)"
   homepage "https://poisonzero.com"
-  version "1.4.16"
+  version "1.4.17"
   license :cannot_represent
 
   on_macos do
     on_arm do
       url "https://poisonzero.com/dl/v#{version}/poisonzero-darwin-arm64"
-      sha256 "c8d921caafe5dbe988105db2b04df0d7a8b138430233e9d281211519737d5d9c"
+      sha256 "1724a1c7bd210ef747103c0a688e415fcd2bd1c8a7d3674056875c171412869b"
     end
     on_intel do
       url "https://poisonzero.com/dl/v#{version}/poisonzero-darwin-amd64"
-      sha256 "995a4ac450a2aa604e797e62288be405f75fda81ee493523cb07504421d49f90"
+      sha256 "1e7a294f0908fdec2af4f4e604f53ed4c990eeb55b08a60f2abbb6ebb2c22b9c"
     end
   end
 
   on_linux do
     on_arm do
       url "https://poisonzero.com/dl/v#{version}/poisonzero-linux-arm64"
-      sha256 "e40915929167f79d361374d2ac3ecd1e40efc107228e5ff935c06626d991b6c4"
+      sha256 "2210cd7df294163d50d089e8030a15ac8c9144c8f4929d5baa12879886684fc1"
     end
     on_intel do
       url "https://poisonzero.com/dl/v#{version}/poisonzero-linux-amd64"
-      sha256 "675205140a50294dc5e8fe240355c181257c30c503aa8b7f8972b9380796b4be"
+      sha256 "9d31757d4f3ea232d1c4fbc044ca3899dc8b622b60ec8e8000c182aeabcb03a4"
     end
   end
 
